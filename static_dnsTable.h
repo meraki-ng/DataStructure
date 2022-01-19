@@ -1,9 +1,7 @@
 #include <stdio.h>
 
 /*
-**************************
-	Table 정적 - 배열
-**************************
+	table
 */
 
 struct dnsTableHeader {
