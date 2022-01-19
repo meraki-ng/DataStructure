@@ -3,7 +3,7 @@
 #define KEY 13
 #define SPACE 127
 /*
-	µ¡¼À¾ÏÈ£(rot 13) (ASCII CODE 127)
+	(rot 13) (ASCII CODE 127)
 */
 void encoding_func(char[], char*, int, int);
 void decoding_func(char[], char*, int, int);
