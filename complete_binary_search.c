@@ -3,20 +3,18 @@
 #include <stdlib.h> 
 #include <time.h>
 
-//ÃâÃ³ : C & ÀÚ·á±¸Á¶ °ú¿Ü
+//ì¶œì²˜ : C & ìë£Œêµ¬ì¡° ê³¼ì™¸
 
 /*
-	ÀÌÁøÅ½»ö±¸Çö
-	½ÇÇà ¹®Á¦ :  ÇÑ¹ø¾¿ Ã£¾Æ³»Áö¸¦ ¸øÇÕ´Ï´Ù.
-	°³¼± : ¿Ï·á!
+	ì´ì§„íƒìƒ‰êµ¬í˜„
 */
 
-#define MAX_SIZE 10000 // ¹è¿­ »çÀÌÁî
-#define RANDOM_NUMBER 1000 // ³­¼ö¹ß»ı
+#define MAX_SIZE 10000 // ë°°ì—´ ì‚¬ì´ì¦ˆ
+#define RANDOM_NUMBER 1000 // ë‚œìˆ˜ë°œìƒ
 #define SWAP(x,y,t) ((t) = (x), (x) = (y), (y) = (t)) // select_sort SWAP
 #define CONDITION_TERMINAL 0
 
-void select_sort(int list[], int n); // binary_search À§ÇØ ¿À¸§Â÷¼ø Á¤·Ä ¸¸µé±â (selectSorting)
+void select_sort(int list[], int n); // binary_search ìœ„í•´ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ ë§Œë“¤ê¸° (selectSorting)
 int binary_search(int[], int, int, int);
 int compare(int middle_num, int searchnum);
 int binary_search_input(int list[], int searchnum, int array_size);
@@ -38,20 +36,20 @@ void main(void)
 	printf("%d ms", et - st);
 
 	do {
-		printf("\nÃ£À» ¹øÈ£¸¦ °Ë»öÇØ ÁÖ¼¼¿ä : (Á¾·áÁ¶°Ç : 0)  : ");
+		printf("\nì°¾ì„ ë²ˆí˜¸ë¥¼ ê²€ìƒ‰í•´ ì£¼ì„¸ìš” : (ì¢…ë£Œì¡°ê±´ : 0)  : ");
 		scanf_s("%d", &searchnum);
 		binary_input_res = binary_search_input(list, searchnum, (MAX_SIZE - 1));
 
 		switch (binary_input_res)
 		{
 		case -1:
-			printf("Á¾·á µÇ¾ú½À´Ï´Ù.\n");
+			printf("ì¢…ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 			break;
 		case 1:
-			printf("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä! \n");
+			printf("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”! \n");
 			break;
 		default:
-			printf("binary_search °á°ú : %d", list[binary_input_res]);
+			printf("binary_search ê²°ê³¼ : %d", list[binary_input_res]);
 			break;
 		}
 	} while (searchnum); // searchnum_res == CONDITION_TERMINAL
