@@ -1,29 +1,29 @@
 /*
 ******************************************************************************
-	Âü°í ÀÚ·á : ´Ù¾çÇÑ ¿¹Á¦·Î ÇĞ½ÀÇÏ´Â µ¥ÀÌÅÍ ±¸Á¶¿Í ¾Ë°í¸®Áò - ÀÎ»çÀÌÆ®
-	 ÇÏ³ëÀÌÅ¾(±âµÕ °³¼ö : 3°³, ¿ø¹İ °³¼ö : »ç¿ëÀÚ ÀÔ·Â) - ½ºÅÃÀ¸·Î ±¸Çö
+	ì°¸ê³  ìë£Œ : ë‹¤ì–‘í•œ ì˜ˆì œë¡œ í•™ìŠµí•˜ëŠ” ë°ì´í„° êµ¬ì¡°ì™€ ì•Œê³ ë¦¬ì¦˜ - ì¸ì‚¬ì´íŠ¸
+	 í•˜ë…¸ì´íƒ‘(ê¸°ë‘¥ ê°œìˆ˜ : 3ê°œ, ì›ë°˜ ê°œìˆ˜ : ì‚¬ìš©ì ì…ë ¥) - ìŠ¤íƒìœ¼ë¡œ êµ¬í˜„
 ******************************************************************************
-							°³¼±ÇÒ Á¡ : µ¿ÀûÇÒ´ç <- ¿¡·¯Ã³¸®
-												µ¿ÀûÇÒ´ç <- »ó¼öÃ³¸®
-												¿¡·¯Ã³¸® <- »ó¼öÃ³¸®
-												Å« ¿ø¹İÀÌ ÀÛÀº ¿ø¹İ À§·Î ¿Ã¶ó°¡Áö ¾Êµµ·Ï ÇÏ±â!
+			ê°œì„ í•  ì  : ë™ì í• ë‹¹ <- ì—ëŸ¬ì²˜ë¦¬
+				ë™ì í• ë‹¹ <- ìƒìˆ˜ì²˜ë¦¬
+				ëŸ¬ì²˜ë¦¬ <- ìƒìˆ˜ì²˜ë¦¬
+		í° ì›ë°˜ì´ ì‘ì€ ì›ë°˜ ìœ„ë¡œ ì˜¬ë¼ê°€ì§€ ì•Šë„ë¡ í•˜ê¸°!
 */
 #include <stdio.h>
 #include <stdlib.h>
 
 #define SMALL_LETTEL 97
 #define HANOI_NUM 3
-#define SIGNAL1 1 //1¹ø ±âµÕ ½ÅÈ£
-#define SIGNAL2 2 //2¹ø ±âµÕ ½ÅÈ£
-#define SIGNAL3 3 //3¹ø ±âµÕ ½ÅÈ£
+#define SIGNAL1 1 //1ë²ˆ ê¸°ë‘¥ ì‹ í˜¸
+#define SIGNAL2 2 //2ë²ˆ ê¸°ë‘¥ ì‹ í˜¸
+#define SIGNAL3 3 //3ë²ˆ ê¸°ë‘¥ ì‹ í˜¸
 
 struct arrayStack
 {
 	int top;
 	int capacity;
-	char *array; //1¹ø ±âµÕ
-	char *array2; //2¹ø ±âµÕ
-	char *array3; //3¹ø ±âµÕ
+	char *array; //1ë²ˆ ê¸°ë‘¥
+	char *array2; //2ë²ˆ ê¸°ë‘¥
+	char *array3; //3ë²ˆ ê¸°ë‘¥
 };
 
 struct arrayStack *createStack(int num, int hanoiDisk)
@@ -62,7 +62,7 @@ void errorPrint();
 void main(void)
 {
 	int i, hanoiDisk;
-	printf("¿ø¹İ °³¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+	printf("ì›ë°˜ ê°œìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
 	scanf_s("%d", &hanoiDisk);
 	fflush(stdin);
 
@@ -145,7 +145,7 @@ void hanoiTop(struct arrayStack *L, struct arrayStack *L2, struct arrayStack *L3
 			if (L->top == 0)
 			{
 				push(SIGNAL2, L2, pop(SIGNAL1, L));
-				printf("¸¶Áö¸· ¿ø¹İ\n");
+				printf("ë§ˆì§€ë§‰ ì›ë°˜\n");
 				break;
 			}
 			else
@@ -154,35 +154,35 @@ void hanoiTop(struct arrayStack *L, struct arrayStack *L2, struct arrayStack *L3
 				{
 					push(SIGNAL2, L2, pop(SIGNAL3, L3));
 					printf("\n%d  ", L3->top);
-					printf("C¿ø¹İ¿¡¼­ B¿ø¹İ\n");
+					printf("Cì›ë°˜ì—ì„œ Bì›ë°˜\n");
 				}
 				else if ((L3->top) < (L->top))
 				{
 					printf("\n%d  ", L3->top);
 					push(SIGNAL1, L, pop(SIGNAL1, L3));
-					printf("C¿ø¹İ¿¡¼­ A¿ø¹İ\n");
+					printf("Cì›ë°˜ì—ì„œ Aì›ë°˜\n");
 				}
 				else if ((L2->top) < (L3->top))
 				{
 					printf("\n%d  ", L2->top);
 					push(SIGNAL2, L2, pop(SIGNAL3, L3));
-					printf("C¿ø¹İ¿¡¼­ B¿ø¹İ\n");
+					printf("Cì›ë°˜ì—ì„œ Bì›ë°˜\n");
 				}
 				else  if ((L2->top) < (L->top))
 				{
 					printf("\n%d  ", L2->top);
 					push(SIGNAL1, L, pop(SIGNAL3, L2));
-					printf("A¿ø¹İ¿¡¼­ B¿ø¹İ\n");
+					printf("Aì›ë°˜ì—ì„œ Bì›ë°˜\n");
 				}
 				else if ((L->top) < (L2->top))
 				{
 					push(SIGNAL1, L, pop(SIGNAL3, L2));
-					printf("B¿ø¹İ¿¡¼­ A¿ø¹İ\n");
+					printf("Bì›ë°˜ì—ì„œ Aì›ë°˜\n");
 				}
 				else if ((L->top) < (L3->top))
 				{
 					push(SIGNAL1, L, pop(SIGNAL3, L2));
-					printf("C¿ø¹İ¿¡¼­ A¿ø¹İ\n");
+					printf("Cì›ë°˜ì—ì„œ Aì›ë°˜\n");
 				}
 			}
 		};
@@ -191,7 +191,7 @@ void hanoiTop(struct arrayStack *L, struct arrayStack *L2, struct arrayStack *L3
 
 void errorPrint()
 {
-	fprintf(stderr,"¿ø¹İÀÇ °³¼ö´Â ÀÚ¿¬¼ö¸¸ °¡´ÉÇÕ´Ï´Ù.");
+	fprintf(stderr,"ì›ë°˜ì˜ ê°œìˆ˜ëŠ” ìì—°ìˆ˜ë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 	exit(1);
 }
 void deleteStack(int num, struct arrayStack *S)
